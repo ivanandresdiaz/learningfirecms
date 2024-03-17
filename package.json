@@ -12,10 +12,13 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@fullcalendar/list": "^6.1.10",
+    "@fullcalendar/react": "^6.1.10",
     "@mui/icons-material": "^5.15.2",
     "@mui/lab": "^5.0.0-alpha.158",
     "@mui/material": "^5.15.2",
     "@mui/x-date-pickers": "^5.0.20",
+    "@uidotdev/usehooks": "^2.4.1",
     "firebase": "^9.23.0",
     "firecms": "^2.0.0",
     "react": "^18.2.0",

@@ -55,14 +55,14 @@ type Products = {
   price: number;
   status: string;
   singleSelected: string;
-  multipleSelected: string[];
+  // multipleSelected: string[];
   custom: string;
   imageUpload: string;
   switch: boolean;
   group: any;
   groups: any;
-  createdAt: Date;
-  updatedAt: Date;
+  // createdAt: Date;
+  // updatedAt: Date;
   reference: any;
   keyvalue: any;
 };
@@ -184,24 +184,24 @@ export const productsCollection = buildCollection<Products>({
       ],
       selectMultiple: false,
     }),
-    multipleSelected: getSelectProperty({
-      name: "singleSelected",
-      arrayValues: [
-        {
-          id: "valor_1",
-          label: "Valor 1",
-        },
-        {
-          id: "valor_2",
-          label: "Valor 2",
-        },
-        {
-          id: "valor_3",
-          label: "Valor 3",
-        },
-      ],
-      selectMultiple: true,
-    }),
+    // multipleSelected: getSelectProperty({
+    //   name: "singleSelected",
+    //   arrayValues: [
+    //     {
+    //       id: "valor_1",
+    //       label: "Valor 1",
+    //     },
+    //     {
+    //       id: "valor_2",
+    //       label: "Valor 2",
+    //     },
+    //     {
+    //       id: "valor_3",
+    //       label: "Valor 3",
+    //     },
+    //   ],
+    //   selectMultiple: true,
+    // }),
     group: {
       name: "Address",
       dataType: "map",
@@ -266,11 +266,11 @@ export const productsCollection = buildCollection<Products>({
       path: CO.stuff,
       description: "Referencia a otro producto",
     }),
-    createdAt: (props) => {
-      console.log("prop createdAts", props);
-      return createdAtProperty;
-    },
-    updatedAt: updatedAtProperty,
+    // createdAt: (props) => {
+    //   console.log("prop createdAts", props);
+    //   return createdAtProperty;
+    // },
+    // updatedAt: updatedAtProperty,
     status: {
       name: "Status",
       validation: { required: true },

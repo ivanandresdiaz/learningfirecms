@@ -1,4 +1,4 @@
-import { initializeApp, getApps, getApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
@@ -12,13 +12,12 @@ import { AppCheck } from "firebase/app-check";
 // } from "firebase/app-check";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD4MvLQJ7lWLLGf4jOGXbsHbJIjZJ22SH8",
-  authDomain: "tutorial-image-4ab83.firebaseapp.com",
-  databaseURL: "https://tutorial-image-4ab83-default-rtdb.firebaseio.com",
-  projectId: "tutorial-image-4ab83",
-  storageBucket: "tutorial-image-4ab83.appspot.com",
-  messagingSenderId: "140021978841",
-  appId: "1:140021978841:web:c93b886c92738d233490c8",
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
 };
 
 // Detect if it is dev mode
@@ -37,7 +36,7 @@ declare global {
 const app = initializeApp(firebaseConfig);
 // console.log("app", app);
 
-let AppCheckInstance: AppCheck | null = null;
+const AppCheckInstance: AppCheck | null = null;
 
 // if (typeof window !== "undefined" && !AppCheckInstance) {
 //   import("firebase/app-check").then(async (firebaseAppCheck) => {

@@ -7,10 +7,13 @@ import {
   FetchEntityProps,
   ResolvedProperty,
   SaveEntityProps,
+  // useFirestoreDataSource,
 } from "firecms";
 import { FirebaseApp } from "firebase/app";
-import { useFirestoreDataSource } from "firecms";
-import { CO } from "../constants/CO";
+// import { useFirestoreDataSource } from "firecms";
+// import { CO } from "../constants/CO";
+// import { getFirestore } from "firebase/firestore";
+import { useCustomFirestoreDataSource } from "../hooks/useCustomFirestoreDataSource";
 
 type CustomDataSourceProps = { firebaseApp?: FirebaseApp };
 
@@ -22,21 +25,24 @@ type CustomDataSourceProps = { firebaseApp?: FirebaseApp };
 export function useCustomDatasource({
   firebaseApp,
 }: CustomDataSourceProps): DataSource {
-  const firestoreDataSource = useFirestoreDataSource({
+  const firestoreDataSource = useCustomFirestoreDataSource({
     firebaseApp,
   });
-
+  // const firestoreDataSource = useFirestoreDataSource({
+  //   firebaseApp,
+  //   // databaseId,
+  // });
   return {
     fetchCollection<
       M extends {
         [Key: string]: CMSType;
       }
     >(props: FetchCollectionProps<M>): Promise<Entity<M>[]> {
-      if (props.path === CO.stuff) {
-        console.log("props.path", props.path);
-        alert("custom fetch maybew SQL");
-        // make your custom http call and return your Entities
-      }
+      // if (props.path === CO.stuff) {
+      //   console.log("props.path", props.path);
+      //   alert("custom fetch maybew SQL");
+      //   // make your custom http call and return your Entities
+      // }
       return firestoreDataSource.fetchCollection(props);
     },
     fetchEntity<
@@ -86,6 +92,18 @@ export function useCustomDatasource({
     },
     countEntities(props: FetchCollectionProps): Promise<number> {
       return firestoreDataSource.countEntities(props);
+    },
+    listenCollection(props: any): any {
+      if (firestoreDataSource && !!firestoreDataSource.listenCollection) {
+        return firestoreDataSource.listenCollection(props);
+      }
+      return undefined;
+    },
+    listenEntity(props: any): any {
+      if (firestoreDataSource && !!firestoreDataSource.listenEntity) {
+        return firestoreDataSource.listenEntity(props);
+      }
+      return undefined;
     },
   };
 }
